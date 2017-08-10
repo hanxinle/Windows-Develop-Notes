@@ -1,9 +1,10 @@
 #  windows-dev
 
-
+----
 ### Env:windows 10 + Visual Studio 2017. Sometimes windows XP and vc6.0. 
 
-----
+---
+
  
 ## add 
 Dialog base. Show how to use EDIT Control , Button and CString.
