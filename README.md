@@ -1,6 +1,7 @@
 #  windows-dev
 
-----### Env:windows 10 + Visual Studio 2017. Sometimes vc6.0. 
+----
+### devtools:windows 10 + Visual Studio 2017. Sometimes vc6.0. 
 
 ---
 
