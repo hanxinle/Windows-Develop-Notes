@@ -1,1 +1,1 @@
-### Open .dsw with windows XP and VC6.0 SP6. VS2017 BAD.
+### Open .dsw with VC6.0 SP6 on windows10 or windows XP. VS2017 is BAD.
