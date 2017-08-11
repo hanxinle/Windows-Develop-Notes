@@ -1,0 +1,32 @@
+<html>
+<body>
+<pre>
+<h1>Build Log</h1>
+<h3>
+--------------------Configuration: RegEdit - Win32 Debug--------------------
+</h3>
+<h3>Command Lines</h3>
+Creating temporary file "C:\TMP\RSP116.tmp" with contents
+[
+/nologo /MTd /W3 /Gm /GX /ZI /Od /D "WIN32" /D "_DEBUG" /D "_WINDOWS" /D "_MBCS" /FR".\Debug/" /Fp".\Debug/RegEdit.pch" /Yu"stdafx.h" /Fo".\Debug/" /Fd".\Debug/" /FD /c 
+"E:\WORK\VC\RegEdit\RegEditDlg.cpp"
+]
+Creating command line "cl.exe @C:\TMP\RSP116.tmp" 
+Creating command line "link.exe /nologo /subsystem:windows /incremental:yes /pdb:".\Debug/RegEdit.pdb" /debug /machine:I386 /out:".\Debug/RegEdit.exe"  .\Debug\ListDlg.obj .\Debug\RegEdit.obj .\Debug\RegEditDlg.obj .\Debug\StdAfx.obj .\Debug\RegEdit.res "
+<h3>Output Window</h3>
+Compiling...
+RegEditDlg.cpp
+E:\WORK\VC\RegEdit\RegEditDlg.cpp(342) : warning C4018: '<' : signed/unsigned mismatch
+E:\WORK\VC\RegEdit\RegEditDlg.cpp(343) : warning C4018: '<' : signed/unsigned mismatch
+Linking...
+Creating command line "bscmake.exe /nologo /o".\Debug/RegEdit.bsc"  .\Debug\StdAfx.sbr .\Debug\ListDlg.sbr .\Debug\RegEdit.sbr .\Debug\RegEditDlg.sbr"
+Creating browse info file...
+<h3>Output Window</h3>
+
+
+
+<h3>Results</h3>
+RegEdit.exe - 0 error(s), 2 warning(s)
+</pre>
+</body>
+</html>
