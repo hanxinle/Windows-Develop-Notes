@@ -13,5 +13,5 @@ Dialog base. Show how to use EDIT Control , Button and CString.
 
 add consoleInMfc.cpp to the MFC (Dialog base) project.In the xxxDlg.cpp file, 1\add "# include <istream.> ";2\ and a button.in function on button add "cout<<""<<endl;";3\ set Project-Setting-Link-sbusystem:windows as subsystem:console; Then OK!
 
-//## CFile
+## CFile
 
