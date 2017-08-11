@@ -1,0 +1,1 @@
+windows XP and VC6.0 SP6.
