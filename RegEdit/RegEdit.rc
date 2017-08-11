@@ -1,4 +1,4 @@
-//Microsoft Developer Studio generated resource script.
+// Microsoft Visual C++ generated resource script.
 //
 #include "resource.h"
 
@@ -13,13 +13,11 @@
 #undef APSTUDIO_READONLY_SYMBOLS
 
 /////////////////////////////////////////////////////////////////////////////
-// Chinese (P.R.C.) resources
+// 中文(简体，中国) resources
 
 #if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_CHS)
-#ifdef _WIN32
 LANGUAGE LANG_CHINESE, SUBLANG_CHINESE_SIMPLIFIED
 #pragma code_page(936)
-#endif //_WIN32
 
 #ifdef APSTUDIO_INVOKED
 /////////////////////////////////////////////////////////////////////////////
@@ -27,18 +25,18 @@ LANGUAGE LANG_CHINESE, SUBLANG_CHINESE_SIMPLIFIED
 // TEXTINCLUDE
 //
 
-1 TEXTINCLUDE DISCARDABLE 
+1 TEXTINCLUDE 
 BEGIN
     "resource.h\0"
 END
 
-2 TEXTINCLUDE DISCARDABLE 
+2 TEXTINCLUDE 
 BEGIN
     "#include ""afxres.h""\r\n"
     "\0"
 END
 
-3 TEXTINCLUDE DISCARDABLE 
+3 TEXTINCLUDE 
 BEGIN
     "#define _AFX_NO_SPLITTER_RESOURCES\r\n"
     "#define _AFX_NO_OLE_RESOURCES\r\n"
@@ -65,15 +63,16 @@ END
 
 // Icon with lowest ID value placed first to ensure application icon
 // remains consistent on all systems.
-IDR_MAINFRAME           ICON    DISCARDABLE     "res\\RegEdit.ico"
+IDR_MAINFRAME           ICON                    "res\\RegEdit.ico"
+
 
 /////////////////////////////////////////////////////////////////////////////
 //
 // Dialog
 //
 
-IDD_ABOUTBOX DIALOG DISCARDABLE  0, 0, 217, 55
-STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+IDD_ABOUTBOX DIALOG 0, 0, 217, 55
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
 CAPTION "关于RegEdit"
 FONT 8, "MS Sans Serif"
 BEGIN
@@ -84,43 +83,39 @@ BEGIN
 END
 
 IDD_REGEDIT_DIALOG DIALOGEX 0, 0, 246, 142
-STYLE DS_MODALFRAME | WS_POPUP | WS_VISIBLE | WS_CAPTION | WS_SYSMENU
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_VISIBLE | WS_CAPTION | WS_SYSMENU
 EXSTYLE WS_EX_APPWINDOW
 CAPTION "REGEDIT"
-FONT 14, "楷体_GB2312"
+FONT 14, "楷体_GB2312", 0, 0, 0x1
 BEGIN
-    PUSHBUTTON      "退出",IDCANCEL,171,16,50,14
+    PUSHBUTTON      "EXIT",IDCANCEL,169,17,50,14
     LTEXT           "",IDC_SUBKEY_NAME,42,44,128,11,NOT WS_GROUP
-    CONTROL         "HKEY_LOCAL_MACHINE",IDC_RADIO_LOCAL_MACHINE,"Button",
-                    BS_AUTORADIOBUTTON | BS_NOTIFY | WS_GROUP,24,15,98,9
-    CONTROL         "HKEY_CURRENT_USER",IDC_RADIO_CURRENT_USER,"Button",
-                    BS_AUTORADIOBUTTON,24,27,98,9
-    LTEXT           "子键",IDC_STATIC,37,72,16,9
-    LTEXT           "值项",IDC_STATIC,37,88,16,9
-    RTEXT           "值",IDC_STATIC,37,103,16,9
-    EDITTEXT        IDC_EDIT_SUBKEY,58,72,96,11,ES_AUTOHSCROLL
-    EDITTEXT        IDC_EDIT_VALUENAME,58,87,96,11,ES_AUTOHSCROLL
-    EDITTEXT        IDC_EDIT_VALUE,58,103,96,11,ES_AUTOHSCROLL
-    PUSHBUTTON      "创建子键",IDC_CREATE_SUBKEY,171,72,45,11
-    PUSHBUTTON      "删除子键",IDC_DELETE_SUBKEY,171,89,45,11
-    PUSHBUTTON      "删除键值",IDC_DELETE_VALUENAME,171,105,45,11
-    PUSHBUTTON      "子键信息",IDC_QUERY_INFOKEY,173,43,45,11
+    CONTROL         "HKEY_LOCAL_MACHINE",IDC_RADIO_LOCAL_MACHINE,"Button",BS_AUTORADIOBUTTON | BS_NOTIFY | WS_GROUP,24,15,98,9
+    CONTROL         "HKEY_CURRENT_USER",IDC_RADIO_CURRENT_USER,"Button",BS_AUTORADIOBUTTON,24,27,98,9
+    LTEXT           "SUBKEY",IDC_STATIC,20,74,33,9
+    LTEXT           "NAME",IDC_STATIC,20,89,22,9
+    LTEXT           "VALUE",IDC_STATIC,22,103,26,9
+    EDITTEXT        IDC_EDIT_SUBKEY,58,72,96,12,ES_AUTOHSCROLL
+    EDITTEXT        IDC_EDIT_VALUENAME,58,87,96,12,ES_AUTOHSCROLL
+    EDITTEXT        IDC_EDIT_VALUE,58,103,96,12,ES_AUTOHSCROLL
+    PUSHBUTTON      "CREATE SUBKEY",IDC_CREATE_SUBKEY,163,72,61,11
+    PUSHBUTTON      "DEL SUBKEY",IDC_DELETE_SUBKEY,163,89,51,11
+    PUSHBUTTON      "DEL SUBKEY VALUE",IDC_DELETE_VALUENAME,162,105,74,11
+    PUSHBUTTON      "SUBKEYINFO",IDC_QUERY_INFOKEY,171,43,47,11
     LTEXT           "...\\",IDC_STATIC,22,45,18,12
 END
 
-IDD_LIST_DIALOG DIALOG DISCARDABLE  0, 0, 298, 201
-STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+IDD_LIST_DIALOG DIALOG 0, 0, 298, 201
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
 CAPTION "SubKey List"
 FONT 10, "System"
 BEGIN
     DEFPUSHBUTTON   "OK",IDOK,126,173,50,14
-    LISTBOX         IDC_LIST,22,44,256,117,NOT LBS_NOTIFY | 
-                    LBS_NOINTEGRALHEIGHT | WS_VSCROLL | WS_TABSTOP
+    LISTBOX         IDC_LIST,22,44,256,117,NOT LBS_NOTIFY | LBS_NOINTEGRALHEIGHT | WS_VSCROLL | WS_TABSTOP
     LTEXT           "",IDC_Title,24,20,250,14
 END
 
 
-#ifndef _MAC
 /////////////////////////////////////////////////////////////////////////////
 //
 // Version
@@ -143,15 +138,13 @@ BEGIN
     BEGIN
         BLOCK "040904B0"
         BEGIN
-            VALUE "CompanyName", "\0"
-            VALUE "FileDescription", "REGEDIT Microsoft 基础类应用程序\0"
-            VALUE "FileVersion", "1, 0, 0, 1\0"
-            VALUE "InternalName", "REGEDIT\0"
-            VALUE "LegalCopyright", "版权所有\0"
-            VALUE "LegalTrademarks", "\0"
-            VALUE "OriginalFilename", "REGEDIT.EXE\0"
-            VALUE "ProductName", "REGEDIT 应用程序\0"
-            VALUE "ProductVersion", "1, 0, 0, 1\0"
+            VALUE "FileDescription", "REGEDIT Microsoft 基础类应用程序"
+            VALUE "FileVersion", "1, 0, 0, 1"
+            VALUE "InternalName", "REGEDIT"
+            VALUE "LegalCopyright", "版权所有"
+            VALUE "OriginalFilename", "REGEDIT.EXE"
+            VALUE "ProductName", "REGEDIT 应用程序"
+            VALUE "ProductVersion", "1, 0, 0, 1"
         END
     END
     BLOCK "VarFileInfo"
@@ -160,8 +153,6 @@ BEGIN
     END
 END
 
-#endif    // !_MAC
-
 
 /////////////////////////////////////////////////////////////////////////////
 //
@@ -169,7 +160,7 @@ END
 //
 
 #ifdef APSTUDIO_INVOKED
-GUIDELINES DESIGNINFO DISCARDABLE 
+GUIDELINES DESIGNINFO
 BEGIN
     IDD_ABOUTBOX, DIALOG
     BEGIN
@@ -183,7 +174,7 @@ BEGIN
     BEGIN
         LEFTMARGIN, 7
         RIGHTMARGIN, 239
-        TOPMARGIN, 7
+        TOPMARGIN, 6
         BOTTOMMARGIN, 135
     END
 
@@ -200,16 +191,27 @@ END
 
 /////////////////////////////////////////////////////////////////////////////
 //
+// AFX_DIALOG_LAYOUT
+//
+
+IDD_REGEDIT_DIALOG AFX_DIALOG_LAYOUT
+BEGIN
+    0
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
 // String Table
 //
 
-STRINGTABLE DISCARDABLE 
+STRINGTABLE
 BEGIN
     IDS_ABOUTBOX            "关于RegEdit"
     IDS_SUBKEY_NAME         "SOFTWARE"
 END
 
-#endif    // Chinese (P.R.C.) resources
+#endif    // 中文(简体，中国) resources
 /////////////////////////////////////////////////////////////////////////////
 
 
