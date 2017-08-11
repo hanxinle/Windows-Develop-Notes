@@ -1,7 +1,6 @@
 #  windows-dev
 
-----
-### Env:windows 10 + Visual Studio 2017. Sometimes windows XP and vc6.0. 
+----### Env:windows 10 + Visual Studio 2017. Sometimes vc6.0. 
 
 ---
 
@@ -20,4 +19,6 @@ OK,run !
 ## CFile
 CString store file name,write,read.CFile object ops 1.txt including write and read.
 
+## RegEdit
+RegEdit could open registry.See rootkey,subkey values.Create new Subkey.Delete Subkey,Subkey value.  
 
