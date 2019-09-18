@@ -1,15 +1,15 @@
 #  windows-dev
 
-----
-### devtools:windows 10 + Visual Studio 2017. Sometimes vc6.0. 
 
----
+### windows 10 + Visual Studio 2017. Sometimes vc6.0. 
 
- 
-## add 
+
+# Projects:
+
+* add 
 Dialog base. Show how to use EDIT Control , Button and CString.
  
-## use console in MFC 
+* use console in MFC 
 add consoleInMfc.cpp to the MFC (Dialog base) project.In the xxxDlg.cpp file:    
 1. add "# include <istream.> ";   
 2. and a button.in function on button add "cout<<""<<endl;";   
@@ -18,9 +18,9 @@ OK,run !
 
 (PS:VC6.0 + windows10 or WindowsXP,VS2017 is bad.)
 
-## CFile
+* CFile
 CString store file name,write,read.CFile object ops 1.txt including write and read.
 
-## RegEdit
+* RegEdit
 RegEdit could open registry.See rootkey,subkey values.Create new Subkey.Delete Subkey,Subkey value.  
 
