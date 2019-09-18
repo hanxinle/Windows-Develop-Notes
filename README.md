@@ -16,7 +16,7 @@ add consoleInMfc.cpp to the MFC (Dialog base) project.In the xxxDlg.cpp file:
 3. set Project-Setting-Link-sbusystem:windows as subsystem:console;   
 OK,run !      
 
-(PS:VC6.0 + windows10 or WindowsXP,VS2017 is bad.)
+   (PS:VC6.0 + windows10 or WindowsXP,VS2017 is bad.)
 
 * CFile
 CString store file name,write,read.CFile object ops 1.txt including write and read.
