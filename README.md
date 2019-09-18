@@ -1,7 +1,7 @@
 #  windows-dev
 
 
-### windows 10 + Visual Studio 2017. Sometimes vc6.0. 
+windows 10 + Visual Studio 2017. Sometimes vc6.0. 
 
 
 # Projects:
