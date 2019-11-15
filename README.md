@@ -1,7 +1,7 @@
-#  windows-dev
+#  Windows程序设计
 
 
-windows 10 + Visual Studio 2017. Sometimes vc6.0. 
+For: windows 10 + Visual Studio 2017.vc6.0 not recommend. 
 
 
 # Projects:
