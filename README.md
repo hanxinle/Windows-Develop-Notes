@@ -28,3 +28,8 @@ CString store file name,write,read.CFile object ops 1.txt including write and re
 
 RegEdit could open registry.See rootkey,subkey values.Create new Subkey.Delete Subkey,Subkey value.  
 
+* Cpp_Assembly
+
+通过汇编，学习C++语言的语法，在汇编层面解释语法。
+
+1.环境配置
