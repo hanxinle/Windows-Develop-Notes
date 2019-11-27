@@ -35,3 +35,4 @@ RegEdit could open registry.See rootkey,subkey values.Create new Subkey.Delete S
 * [环境配置](https://github.com/hanxinle/windows-dev/blob/master/Cpp_Assembly/README.md) 
 * [extern "C"及避免头文件重复包含](https://github.com/hanxinle/windows-dev/blob/master/Cpp_Assembly/extern_C_and_multi_files_include.md)
 * [内联函数和const常量](Cpp_Assembly/const_inline.md)
+* [引用](Cpp_Assembly/reference.md)
