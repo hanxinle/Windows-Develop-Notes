@@ -7,7 +7,6 @@
 假设头文件为 tools.h,它的C实现文件是 tools.c,C++工程文件为 main.cpp,重点是**tools.h**中的写法,应该有如下形式:
 
 ```C++
-
 #ifndef __TOOLS_H     //宏定义ifndef,define,endif 避免重复包含
 #define __TOOLS_H
 
@@ -23,8 +22,5 @@ int func3();
 }
 #endif // __cplusplus
 
-
 #endif // !__TOOLS_H
-
-
 ```
