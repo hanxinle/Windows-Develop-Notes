@@ -1,10 +1,10 @@
-// MFCconsoleDlg.cpp : implementation file
+﻿// MFCconsoleDlg.cpp : implementation file
 //
 
 #include "stdafx.h"
 #include "MFCconsole.h"
 #include "MFCconsoleDlg.h"
-#include  <iostream.h>
+#include  <iostream>
 
 #ifdef _DEBUG
 #define new DEBUG_NEW
@@ -179,6 +179,6 @@ void CMFCconsoleDlg::OnButton1()
 	// TODO: Add your control notification handler code here
 	UpdateData(TRUE);
 	m_strTest.Format("%s",m_strTest);
-	cout<<"m_strTest is "<<m_strTest<<endl;
+	std::cout<<"m_strTest is "<<m_strTest<<std::endl;
 	
 }

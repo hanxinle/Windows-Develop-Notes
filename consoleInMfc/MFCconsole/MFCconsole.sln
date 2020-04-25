@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.1022
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "MFCconsole", "MFCconsole.vcxproj", "{37B1AB06-ECDB-491D-A757-57D5B4354F14}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x86 = Debug|x86
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{37B1AB06-ECDB-491D-A757-57D5B4354F14}.Debug|x86.ActiveCfg = Debug|Win32
+		{37B1AB06-ECDB-491D-A757-57D5B4354F14}.Debug|x86.Build.0 = Debug|Win32
+		{37B1AB06-ECDB-491D-A757-57D5B4354F14}.Release|x86.ActiveCfg = Release|Win32
+		{37B1AB06-ECDB-491D-A757-57D5B4354F14}.Release|x86.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {8223C9DB-B458-4903-A9AB-28D6FC5691D1}
+	EndGlobalSection
+EndGlobal
