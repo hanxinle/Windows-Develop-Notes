@@ -1,10 +1,12 @@
-#  Windows绋嬪簭璁捐
+#  Windows程序设计
 
 
-For: windows 10 + Visual Studio 2017.vc6.0 not recommend. 
+> For: windows 10 + Visual Studio 2017. VC++6.0 not recommend. 
 
 
-## MFC宸ョ▼:
+## MFC工程初步
+
+> 建立 MFC 初步印象
 
 * add 
 
@@ -52,4 +54,4 @@ Data Types in MFC
 | POSITION    | POSITION OF ELEMENT IN SET
 | LPCRECT     | 32BIT POITER TO A CONST RECT STRUCT
 
->PS: last two only in MFC
+> PS: last two only in MFC
