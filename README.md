@@ -1,14 +1,12 @@
-#  Windows³ÌÐòÉè¼Æ
+#  Windows ç¨‹åºè®¾è®¡
 
 
 > For: windows 10 + Visual Studio 2017. VC++6.0 not recommend. 
 
 
-## MFC¹¤³Ì³õ²½
+## MFC å…¥é—¨ç¤ºä¾‹(4ä¸ª)
 
-> ½¨Á¢ MFC ³õ²½Ó¡Ïó
-
-* add 
+* add  
 
 Dialog base. Show how to use EDIT Control , Button and CString.
  
@@ -20,24 +18,25 @@ add consoleInMfc.cpp to the MFC (Dialog base) project.In the xxxDlg.cpp file:
 3. set Project-Setting-Link-sbusystem:windows as subsystem:console;   
 OK,run !      
 
-
-* CFile
+* CFile 
 
 CString store file name,write,read.CFile object ops 1.txt including write and read.
+PS: with bug.
 
 * RegEdit
 
 RegEdit could open registry.See rootkey,subkey values.Create new Subkey.Delete Subkey,Subkey value.
+
 <center>
 Data Types in MFC
 </center>
 
-|    |    |
-|:--:|:--:|
-| BOOL    |      TRUE | FALSE
-| BSTR    |      32 BIT CHAR POINTER
-| BYTE    |      8 BIT ,likes unsigned char in c
-| COLORREF   |   32BIT DESCRIBE COLOR,USED IN GDI
+|    |     |
+|:--:|:---:|
+| BOOL     |      TRUE | FALSE
+| BSTR     |      32 BIT CHAR POINTER
+| BYTE     |      8 BIT ,likes unsigned char in c
+| COLORREF |      32BIT DESCRIBE COLOR,USED IN GDI
 | DWORD    |     32BIT UNSINGNED INT
 | LONG     |     32BIT INT (+ -)
 | LPARAM   |     32BIT ,OFFTEN USED FOR FUNCTION'S Parameters
@@ -51,7 +50,7 @@ Data Types in MFC
 | WNDPROC  |     32BIT POITER TO WINDOWS FUNCTION
 | WORD     |     16BIT UNSIGNED INT
 | WPARAM   |     32BIT VALUE IN WIN32,OFTEN AS FUNCTION'S PARAMETERS
-| POSITION    | POSITION OF ELEMENT IN SET
-| LPCRECT     | 32BIT POITER TO A CONST RECT STRUCT
+| POSITION |     POSITION OF ELEMENT IN SET
+| LPCRECT  |     32BIT POITER TO A CONST RECT STRUCT
 
-> PS: last two only in MFC
+> PS: last two only available in MFC
