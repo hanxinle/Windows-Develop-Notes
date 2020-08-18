@@ -3,7 +3,7 @@
 using namespace std;
 
 int main() {
-    MessageBox(NULL, "窗口显示问题", "标题", MB_OKCANCEL);
+    MessageBox(NULL, "Hello win32", "标题栏", MB_OKCANCEL);
     return 0;
 }
 

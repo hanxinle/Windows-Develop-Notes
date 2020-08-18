@@ -12,8 +12,6 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ch2_dll_test", "src\ch2_dll
 		{0F53DD03-3F02-4ABD-B9DB-41A51BE94F32} = {0F53DD03-3F02-4ABD-B9DB-41A51BE94F32}
 	EndProjectSection
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "mfc_del", "mfc_del\mfc_del.vcxproj", "{58D55F0F-EA4B-4E96-A5B8-303ADC029BF4}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -46,14 +44,6 @@ Global
 		{CA7ECB78-782E-4AB9-9DDD-E86BAD5CC401}.Release|x64.Build.0 = Release|x64
 		{CA7ECB78-782E-4AB9-9DDD-E86BAD5CC401}.Release|x86.ActiveCfg = Release|Win32
 		{CA7ECB78-782E-4AB9-9DDD-E86BAD5CC401}.Release|x86.Build.0 = Release|Win32
-		{58D55F0F-EA4B-4E96-A5B8-303ADC029BF4}.Debug|x64.ActiveCfg = Debug|x64
-		{58D55F0F-EA4B-4E96-A5B8-303ADC029BF4}.Debug|x64.Build.0 = Debug|x64
-		{58D55F0F-EA4B-4E96-A5B8-303ADC029BF4}.Debug|x86.ActiveCfg = Debug|Win32
-		{58D55F0F-EA4B-4E96-A5B8-303ADC029BF4}.Debug|x86.Build.0 = Debug|Win32
-		{58D55F0F-EA4B-4E96-A5B8-303ADC029BF4}.Release|x64.ActiveCfg = Release|x64
-		{58D55F0F-EA4B-4E96-A5B8-303ADC029BF4}.Release|x64.Build.0 = Release|x64
-		{58D55F0F-EA4B-4E96-A5B8-303ADC029BF4}.Release|x86.ActiveCfg = Release|Win32
-		{58D55F0F-EA4B-4E96-A5B8-303ADC029BF4}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
