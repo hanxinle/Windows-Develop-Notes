@@ -1,2 +1,0 @@
-#define CH1DLLEXPORTS_API __declspec(dllexport)
-#define CH1DLLEXPORTS_API __declspec(dllimport)
