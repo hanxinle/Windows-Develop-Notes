@@ -58,6 +58,6 @@ MFC 中的数据类型
 
 > PS: 最后两个是 MFC　独有的。
 
-## [动态链接库初步](./dll_create_test)
+## [动态链接库初步](./dll_create_test/)
 
 配合这篇[博文](https://hanxinle.github.io/post/code/vc6dll.html)阅读,本科毕业设计曾在 VC++6.0 上面实现过 dll，现在用 vs2017 实现，细节有不同但是大思路是一致的，遵循“定义 - 导出 - 调用” 原则。
