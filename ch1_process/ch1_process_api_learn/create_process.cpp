@@ -9,7 +9,7 @@
 #include <windows.h>
 using namespace std;
 
-int main1() {
+int main() {
     //初始化 CreateProcess 参数
     char szCommandLine[] = "notepad.exe";
     STARTUPINFO si;
