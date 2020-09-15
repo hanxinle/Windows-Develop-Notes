@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>qt_image_single_threadClass</class>
+ <widget class="QWidget" name="qt_image_single_threadClass">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>600</width>
+    <height>400</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>qt_image_single_thread</string>
+  </property>
+  <property name="windowIcon">
+   <iconset resource="qt_image_single_thread.qrc">
+    <normaloff>:/qt_image_single_thread/Resources/logo.png</normaloff>:/qt_image_single_thread/Resources/logo.png</iconset>
+  </property>
+  <widget class="QLabel" name="view">
+   <property name="geometry">
+    <rect>
+     <x>40</x>
+     <y>20</y>
+     <width>261</width>
+     <height>351</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-color: rgb(255, 221, 181);</string>
+   </property>
+   <property name="text">
+    <string>图片显示</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="open">
+   <property name="geometry">
+    <rect>
+     <x>340</x>
+     <y>50</y>
+     <width>81</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">font: 14pt &quot;ADMUI3Lg&quot;;</string>
+   </property>
+   <property name="text">
+    <string>打开</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="deal">
+   <property name="geometry">
+    <rect>
+     <x>460</x>
+     <y>50</y>
+     <width>81</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">font: 14pt &quot;ADMUI3Lg&quot;;</string>
+   </property>
+   <property name="text">
+    <string>处理</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label">
+   <property name="geometry">
+    <rect>
+     <x>340</x>
+     <y>140</y>
+     <width>31</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">font: 15pt &quot;ADMUI3Lg&quot;;</string>
+   </property>
+   <property name="text">
+    <string>亮度</string>
+   </property>
+  </widget>
+  <widget class="QSpinBox" name="bright">
+   <property name="geometry">
+    <rect>
+     <x>340</x>
+     <y>170</y>
+     <width>81</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="maximum">
+    <number>200</number>
+   </property>
+   <property name="value">
+    <number>100</number>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_2">
+   <property name="geometry">
+    <rect>
+     <x>340</x>
+     <y>220</y>
+     <width>71</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">font: 15pt &quot;ADMUI3Lg&quot;;</string>
+   </property>
+   <property name="text">
+    <string>时间（ms）</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="dealtime">
+   <property name="geometry">
+    <rect>
+     <x>340</x>
+     <y>240</y>
+     <width>91</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">font: 15pt &quot;ADMUI3Lg&quot;;</string>
+   </property>
+   <property name="text">
+    <string>0</string>
+   </property>
+  </widget>
+ </widget>
+ <layoutdefault spacing="6" margin="11"/>
+ <resources>
+  <include location="qt_image_single_thread.qrc"/>
+ </resources>
+ <connections>
+  <connection>
+   <sender>open</sender>
+   <signal>clicked()</signal>
+   <receiver>qt_image_single_threadClass</receiver>
+   <slot>Open()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>378</x>
+     <y>66</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>382</x>
+     <y>451</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>deal</sender>
+   <signal>clicked()</signal>
+   <receiver>qt_image_single_threadClass</receiver>
+   <slot>Deal()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>509</x>
+     <y>69</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>509</x>
+     <y>431</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+ <slots>
+  <slot>Open()</slot>
+  <slot>Deal()</slot>
+ </slots>
+</ui>
