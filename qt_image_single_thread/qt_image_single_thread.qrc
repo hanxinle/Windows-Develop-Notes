@@ -1,0 +1,5 @@
+<RCC>
+  <qresource prefix="qt_image_single_thread">
+    <file>Resources/logo.png</file>
+  </qresource>
+</RCC>
