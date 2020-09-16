@@ -1,7 +1,7 @@
 #  Windows 程序设计
 
 
-> For: windows 10 + Visual Studio 2017. VC++6.0 not recommend. 
+>windows 10 + Visual Studio 2017. 
 
 
 ## [MFC 入门示例(4个)](./ch0_4_mfc_examples/)
