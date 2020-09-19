@@ -609,7 +609,7 @@ int main(void) {
 
 ## 4.6 VC++ 多线程实战图片编辑器
 
-## 4.6.1 线程如何理解
+### 4.6.1 线程如何理解
 
 >线程可以看作是操作系统分配给 CPU 时间（时间片）的基本单位。
 
@@ -617,22 +617,22 @@ int main(void) {
 
 当进程被终止时，主线程也同时被终止，当主线程消亡时后，其子线程也同时消亡。但是在实际开发中经常发现主线程结束后，子线程没有结束，操作系统没有结束子线程，甚至出现不能释放子线程的情况。为了应对这种情况，在创建子线程的时候，一定要设置子线程的结束条件，不要依赖系统结束子线程，防止产生资源泄露及其它错误。
 
-## 4.6.2 [线程类的封装](./xthread_platform)
+### 4.6.2 [线程类的封装](./xthread_platform)
 
 一个对象代表新创建一个线程，一个线程对象本身是没有意义的，一定要设置一个工作函数指明线程所要进行的操作，即 usr_define_task(),声明为纯虚函数。这样直接子类对象会被提示实现 usr_define_task 函数。
 
 不能把 usr_define_task 函数声明为线程的入口函数，即 _beginthread() 的第一个参数所需要的参数，这样会：1 破坏了封装，线程对象只能完成单一工作，而不同的任务要频繁更改基类的代码，没有发挥 OOP 的优势；2 报错，_beginthread 函数要求的实参类型函数原型是 void func(void*),在类中定义的函数的类型则属于 void (xthread:: *)( void*)，二者矛盾。正确的做法是在 xthread 的实现文件中声明一个静态函数作为线程函数入口函数（静态保证了只能在本 .cpp 文件中访问，不会被其它文件调用对数据进行非法操作），类内函数 start 负责线程的创建，进入该静态函数，在该静态函数中调用usr_define_task() 处理数据，并且在该静态函数内部结束线程。在子类继承后，重写 usr_define_task 函数实现。
 
 
-## 4.6.3 线程类的挂起和恢复
+### 4.6.3 线程类的挂起和恢复
 
 挂起和恢复在实际应用中，除非是一开始适当的挂起，然后一起启动。正常情况下不太用这些功能，因为挂起的时候无法确定线程执行到哪里，在其它线程中调用函数挂起线程时可能被挂起的线程刚刚得到互斥资源，挂起后资源不释放，导致未知的错误。
 
-## 4.6.4 线程同步
+### 4.6.4 线程同步
 
 互斥访问静态资源或者互斥执行操作，操作不可打断。几乎是效率最高的线程同步方法。这部分封装了一个 xmutex 类，将临界区的初始化、进入、退出、删除返还系统这些操作都封装，这个例子很好地体现了　C++　面向对象封装的方便之处，需要好好消化。另外，同一个项目中有多个 main 函数用于不同实验的时候，在编译时除了保留一个 main 外，需要注意其它文件是不是定了同名称的子类、函数，编译时编译器不一定会采用 main 函数所在文件的定义，会造成莫名奇妙的错误，难以排查，最好将其它无关文件注释掉。
 
-## 4.6.5 C++11 中的线程类
+### 4.6.5 C++11 中的线程类
 
 一般的线程启动、互斥已经有了定义，复杂的操作还需要借助系统 API 完成，另外，对于互斥、临界区的使用，遵循“晚使用，早退出”的原则，因为这类操作需要额外的系统开销，上述原则能保证系统开销最小。另外，早早地用 C++11 的 lock() 会出现找不到互斥操作变量的错误，在变量操作前使用 lock() 即可更正这类错误。
 
@@ -640,7 +640,8 @@ int main(void) {
 
 [单线程版本](./qt_image_single_thread)、[多线程版本](./qt_image_multi_thread)
 
-## [5 MFC 入门示例(4个)](./ch0_4_mfc_examples/)
+
+# [5 MFC 入门示例(4个)](./ch0_4_mfc_examples/)
 
 * RegEdit
 
@@ -698,3 +699,108 @@ MFC 中的数据类型
 配合这篇[博文](https://hanxinle.github.io/post/code/vc6dll.html)阅读,本科毕业设计曾在 VC++6.0 上面实现过 dll，现在用 vs2017 实现，细节有不同但是大思路是一致的，遵循“定义 - 导出 - 调用” 原则。
 
 在 vs2017 动态链接库项目中，自己以前经常程序莫名崩溃，一个原因是在解决方案中没有设置项目依赖关系，另一个原因是在 dll 项目中，需要在“项目属性-链接器-高级-导入库”中进行设置，导出 lib、dll 文件，使用时包含头文件，并且配置好包含路径、库路径、执行路径（dll  所咋路径）就不会再出错了。
+
+# 6 windows sdk GUI编程
+
+## 6.1 消息及消息驱动
+
+![message](./img/9_消息概述.png)
+Windwos GUI 是消息驱动程序，一个 GUI 在 Windows 中可以视作一个进程。它也有窗口句柄，可以有子线程，WinMain 函数的后两个参数是 CreateProcess 的参数指定的。
+
+windows 消息驱动机制：操作系统通过发送消息给 GUI 程序响应用户的操作。GUI 程序可以根据接收的消息，执行相应的操作，消息的发送方是操作系统，不是用户。Windows 向程序发送消息的时候，调用一个函数精确地描述了消息地信息。程序中，接收消息并处理地函数，是一个自定义的回调函数，它的原形如下：
+
+```c++
+LRESULT CALLBACK WindowProc (HWND hwnd, 
+                            UINT uMsg,
+                            WPARAM wParam,
+                            LPARAM IParam )
+```
+
+## 6.2 Windows Dialog 创建及工作机制
+
+win32 创建窗口的过程有如下3个步骤，首先，注册窗口，设置属性，接着，创建窗口、现实并刷新，最后定义消息处理函数，接收消息并处理。注册窗口的时候，将消息处理函数、类名、实例绑定等工作已经完成。
+
+![](./img/10_WindowsGUI程序工作原理.png)
+
+第一次注册 wndclass，第二次注册回调函数 MainWndProc 处理消息，关于消息和消息的类别，有3类，Windows 消息、控件消息、命令消息。三类消息都在 Windows 消息队列中，由 Windows 内核调度分发（不是用户）。Windows 编程就是针对消息编程，完成了对消息的响应的编程，就是完成了上层应用。这就是对 Windows 消息处理框架的解释。
+
+```c++
+#include <stdio.h>
+#include <windows.h>
+LRESULT CALLBACK MainWndProc(HWND, UINT, WPARAM, LPARAM);
+
+int APIENTRY WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance,
+                     LPSTR lpCmdLine, int nCmdShow) {
+
+    //注册窗口类
+    char szClassName[] = "MainWClass";
+    WNDCLASSEX wndclass;
+
+    wndclass.cbSize = sizeof(wndclass);
+    wndclass.style = CS_HREDRAW | CS_VREDRAW;
+    wndclass.lpfnWndProc = MainWndProc;
+    wndclass.cbClsExtra = 0;
+    wndclass.cbWndExtra = 0;
+    wndclass.hInstance = hInstance;
+    wndclass.hIcon = ::LoadIcon(NULL, IDI_APPLICATION);
+    wndclass.hCursor = ::LoadCursor(NULL, IDC_ARROW);
+    wndclass.hbrBackground = (HBRUSH)::GetStockObject(WHITE_BRUSH);
+    wndclass.lpszMenuName = NULL;
+    wndclass.lpszClassName = szClassName;
+    wndclass.hIconSm = NULL;
+
+    ::RegisterClassEx(&wndclass);
+
+    //创建主窗口
+    HWND hWnd = ::CreateWindowEx(0,
+                                 szClassName,//类名
+                                 "我的第一个GUI程序",
+                                 WS_OVERLAPPEDWINDOW,
+                                 CW_USEDEFAULT,
+                                 CW_USEDEFAULT,
+                                 CW_USEDEFAULT,
+                                 CW_USEDEFAULT,
+                                 NULL,
+                                 NULL,
+                                 hInstance,
+                                 NULL
+    );
+    if (NULL == hWnd) {
+        ::MessageBox(NULL, "创建窗口失败", "错误", MB_OK);
+        return -1;
+    }
+
+    //显示窗口
+    ::ShowWindow(hWnd, nCmdShow);
+    ::UpdateWindow(hWnd);
+
+    //从操作系统的消息队列中不断的捡取消息
+    MSG msg;
+    while (::GetMessage(&msg, NULL, 0, 0)) {
+        ::TranslateMessage(&msg);
+        ::DispatchMessage(&msg);
+    }
+    return msg.wParam;
+} 
+
+LRESULT CALLBACK MainWndProc(HWND hWnd, UINT message, WPARAM wparam, LPARAM lparam) {
+    switch (message) {
+    case WM_DESTROY:
+        ::PostQuitMessage(0);
+        return 0;
+    }
+    return ::DefWindowProc(hWnd, message, wparam, lparam);
+}
+```
+
+## 6.3 示例
+
+资源是一些二进制数据，用 .rc 这一脚本格式记录，Windows 用 rc.exe 将其编译为 .res 文件，可以通过链接器添加到可执行文件。
+
+![资源](./img/11_Windows中资源的解释.png)
+
+### 6.3.1 示例1，创建窗口，处理键鼠消息，计时器使用
+
+### 6.3.2 示例2：石头剪刀布游戏，按钮及消息处理
+
+### 6.3.3 其它3个用户界面编程案例（应用 Windows 提供的模板、控件）
