@@ -804,3 +804,5 @@ LRESULT CALLBACK MainWndProc(HWND hWnd, UINT message, WPARAM wparam, LPARAM lpar
 ### 6.3.2 示例2：石头剪刀布游戏，按钮及消息处理
 
 ### 6.3.3 其它3个用户界面编程案例（应用 Windows 提供的模板、控件）
+
+1、源码创建控件，处理消息；2、dialog 之间交换信息；
