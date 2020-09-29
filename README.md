@@ -806,3 +806,12 @@ LRESULT CALLBACK MainWndProc(HWND hWnd, UINT message, WPARAM wparam, LPARAM lpar
 ### 6.3.3 其它3个用户界面编程案例（应用 Windows 提供的模板、控件）
 
 1、源码创建控件，处理消息；2、dialog 之间交换信息；3、图片显示、List Controller 添加图片
+
+
+# 7 MFC 程序设计进阶
+
+## 7.1 MFC 的理解
+
+![](./img/12_mfc对windowsAPI封装情况.png)
+
+继承 CWinAPP，封装 instance，instance 包含各个空间的 hwnd，封装 hwnd 创建消息处理接口。
