@@ -11,3 +11,9 @@
 *.log
 *.tlog
 *.txt
+*.ilk
+*.pch
+*.res
+*.suo
+*.db
+*.ipch
