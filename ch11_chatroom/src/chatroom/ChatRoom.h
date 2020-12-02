@@ -1,10 +1,10 @@
-// ChatRoom.h : main header file for the PROJECT_NAME application
+﻿// ChatRoom.h : main header file for the PROJECT_NAME application
 //
 
 #pragma once
 
 #ifndef __AFXWIN_H__
-	#error "include 'stdafx.h' before including this file for PCH"
+#error "include 'stdafx.h' before including this file for PCH"
 #endif
 
 #include "resource.h"		// main symbols
@@ -14,18 +14,17 @@
 // See ChatRoom.cpp for the implementation of this class
 //
 
-class CChatRoomApp : public CWinApp
-{
+class CChatRoomApp : public CWinApp {
 public:
-	CChatRoomApp();
+    CChatRoomApp();
 
-// Overrides
-	public:
-	virtual BOOL InitInstance();
+    // Overrides
+public:
+    virtual BOOL InitInstance();
 
-// Implementation
+    // Implementation
 
-	DECLARE_MESSAGE_MAP()
+    DECLARE_MESSAGE_MAP()
 };
 
 extern CChatRoomApp theApp;
