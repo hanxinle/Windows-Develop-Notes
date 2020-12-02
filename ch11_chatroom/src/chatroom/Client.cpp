@@ -1,55 +1,55 @@
-
+ï»¿
 #include "stdafx.h"
 #include "ChatRoomDlg.h"
 #include "Inc.h"
 
-DWORD WINAPI ConnectThreadFunc(LPVOID pParam)
-{
-	CChatRoomDlg *pChatRoom = (CChatRoomDlg *)pParam;
-	ASSERT(pChatRoom != NULL);
-	pChatRoom->m_ConnectSock = socket(AF_INET , SOCK_STREAM , IPPROTO_TCP);
-	if ( pChatRoom->m_ConnectSock == INVALID_SOCKET ) {
-		AfxMessageBox(_T("ÐÂ½¨SocketÊ§°Ü£¡"));
-		return FALSE;
-	}
-	CString strServIp;
-	pChatRoom->GetDlgItemText(IDC_IP_ADDR, strServIp);
-	int iPort = pChatRoom->GetDlgItemInt(IDC_CONNECT_PORT);
-	if ( iPort <= 0 || iPort > 65535 ) {
-		AfxMessageBox(_T("ÇëÊäÈëºÏÊÊµÄ¶Ë¿Ú£º1 - 65535"));
-		goto __Error_End;
-	}
-	char szIpAddr[16] = {0};
-	USES_CONVERSION;
-	strcpy_s(szIpAddr, 16, T2A(strServIp));
+DWORD WINAPI ConnectThreadFunc(LPVOID pParam) {
+    CChatRoomDlg *pChatRoom = (CChatRoomDlg *)pParam;
+    ASSERT(pChatRoom != NULL);
+    pChatRoom->m_ConnectSock = socket(AF_INET, SOCK_STREAM, IPPROTO_TCP);
+    if (pChatRoom->m_ConnectSock == INVALID_SOCKET) {
+        AfxMessageBox(_T("æ–°å»ºSocketå¤±è´¥ï¼"));
+        return FALSE;
+    }
+    CString strServIp;
+    pChatRoom->GetDlgItemText(IDC_IP_ADDR, strServIp);
+    int iPort = pChatRoom->GetDlgItemInt(IDC_CONNECT_PORT);
+    if (iPort <= 0 || iPort > 65535) {
+        AfxMessageBox(_T("è¯·è¾“å…¥åˆé€‚çš„ç«¯å£ï¼š1 - 65535"));
+        goto __Error_End;
+    }
+    char szIpAddr[16] = { 0 };
+    USES_CONVERSION;
+    strcpy_s(szIpAddr, 16, T2A(strServIp));
 
-	sockaddr_in server;
-	server.sin_family = AF_INET;
-	server.sin_port = htons(iPort);
-	server.sin_addr.s_addr = inet_addr(szIpAddr);
-	if ( connect(pChatRoom->m_ConnectSock, (struct sockaddr *)&server,  sizeof(struct sockaddr)) == SOCKET_ERROR ) {
-			AfxMessageBox(_T("Á¬½ÓÊ§°Ü£¬ÇëÖØÊÔ£¡"));
-			goto __Error_End;
-	}
-	pChatRoom->m_bIsServer = FALSE;
-	pChatRoom->ShowMsg(_T("ÏµÍ³ÐÅÏ¢£ºÁ¬½Ó·þÎñÆ÷³É¹¦£¡"));
-	while( TRUE && !(pChatRoom->bShutDown)) {
-		if ( SOCKET_Select(pChatRoom->m_ConnectSock) ) {
-			TCHAR szBuf[MAX_BUF_SIZE] = {0};
-			int iRet = recv(pChatRoom->m_ConnectSock, (char *)szBuf, MAX_BUF_SIZE, 0);
-			if ( iRet > 0 ) {
-				//right;
-				pChatRoom->ShowMsg(szBuf);
-			}else{
-				//close socket;
-				pChatRoom->ShowMsg(_T("ÁÄÌìÊÒ·þÎñÆ÷ÒÑÍ£Ö¹£¬ÇëÖØÐÂ½øÐÐÁ¬½Ó£¡"));
-				break;
-			}
-		}
-		Sleep(500);
-	}
+    sockaddr_in server;
+    server.sin_family = AF_INET;
+    server.sin_port = htons(iPort);
+    server.sin_addr.s_addr = inet_addr(szIpAddr);
+    if (connect(pChatRoom->m_ConnectSock, (struct sockaddr *)&server, sizeof(struct sockaddr)) == SOCKET_ERROR) {
+        AfxMessageBox(_T("è¿žæŽ¥å¤±è´¥ï¼Œè¯·é‡è¯•ï¼"));
+        goto __Error_End;
+    }
+    pChatRoom->m_bIsServer = FALSE;
+    pChatRoom->ShowMsg(_T("ç³»ç»Ÿä¿¡æ¯ï¼šè¿žæŽ¥æœåŠ¡å™¨æˆåŠŸï¼"));
+    while (TRUE && !(pChatRoom->bShutDown)) {
+        if (SOCKET_Select(pChatRoom->m_ConnectSock)) {
+            TCHAR szBuf[MAX_BUF_SIZE] = { 0 };
+            int iRet = recv(pChatRoom->m_ConnectSock, (char *)szBuf, MAX_BUF_SIZE, 0);
+            if (iRet > 0) {
+                //right;
+                pChatRoom->ShowMsg(szBuf);
+            }
+            else {
+                //close socket;
+                pChatRoom->ShowMsg(_T("èŠå¤©å®¤æœåŠ¡å™¨å·²åœæ­¢ï¼Œè¯·é‡æ–°è¿›è¡Œè¿žæŽ¥ï¼"));
+                break;
+            }
+        }
+        Sleep(500);
+    }
 
 __Error_End:
-	closesocket(pChatRoom->m_ConnectSock);
-	return TRUE;
+    closesocket(pChatRoom->m_ConnectSock);
+    return TRUE;
 }

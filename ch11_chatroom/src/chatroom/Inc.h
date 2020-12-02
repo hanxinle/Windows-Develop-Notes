@@ -1,4 +1,4 @@
-
+﻿
 #pragma once
 class CChatRoomDlg;
 
@@ -7,18 +7,20 @@ class CChatRoomDlg;
 
 class CClientItem {
 public:
-	CString m_strIp;
-	SOCKET m_Socket;
-	HANDLE hThread;
-	CChatRoomDlg *m_pMainWnd;
-	CClientItem(){
-		m_pMainWnd = NULL;
-		m_Socket = INVALID_SOCKET;
-		hThread = NULL;
-	}
+    CString m_strIp;
+    SOCKET m_Socket;
+    HANDLE hThread;
+    CChatRoomDlg * m_pMainWnd;
+    CClientItem() {
+        m_pMainWnd = NULL;
+        m_Socket = INVALID_SOCKET;
+        hThread = NULL;
+    }
 };
 
 DWORD WINAPI ListenThreadFunc(LPVOID pParam);
 DWORD WINAPI ClientThreadProc(LPVOID lpParameter);
 DWORD WINAPI ConnectThreadFunc(LPVOID pParam);
-BOOL SOCKET_Select(SOCKET hSocket, int nTimeOut = 100, BOOL bRead = FALSE);
+BOOL SOCKET_Select(SOCKET hSocket,
+                   int nTimeOut = 100,
+                   BOOL bRead = FALSE);
