@@ -18,7 +18,7 @@ DWORD WINAPI ConnectThreadFunc(LPVOID pParam) {
         AfxMessageBox(_T("请输入合适的端口：1 - 65535"));
         goto __Error_End;
     }
-    char szIpAddr[16] = { 0 };
+    char szIpAddr[16] = {0};
     USES_CONVERSION;
     strcpy_s(szIpAddr, 16, T2A(strServIp));
 
@@ -26,7 +26,8 @@ DWORD WINAPI ConnectThreadFunc(LPVOID pParam) {
     server.sin_family = AF_INET;
     server.sin_port = htons(iPort);
     server.sin_addr.s_addr = inet_addr(szIpAddr);
-    if (connect(pChatRoom->m_ConnectSock, (struct sockaddr *)&server, sizeof(struct sockaddr)) == SOCKET_ERROR) {
+    if (connect(pChatRoom->m_ConnectSock, (struct sockaddr *)&server,
+                sizeof(struct sockaddr)) == SOCKET_ERROR) {
         AfxMessageBox(_T("连接失败，请重试！"));
         goto __Error_End;
     }
@@ -34,14 +35,14 @@ DWORD WINAPI ConnectThreadFunc(LPVOID pParam) {
     pChatRoom->ShowMsg(_T("系统信息：连接服务器成功！"));
     while (TRUE && !(pChatRoom->bShutDown)) {
         if (SOCKET_Select(pChatRoom->m_ConnectSock)) {
-            TCHAR szBuf[MAX_BUF_SIZE] = { 0 };
-            int iRet = recv(pChatRoom->m_ConnectSock, (char *)szBuf, MAX_BUF_SIZE, 0);
+            TCHAR szBuf[MAX_BUF_SIZE] = {0};
+            int iRet =
+                recv(pChatRoom->m_ConnectSock, (char *)szBuf, MAX_BUF_SIZE, 0);
             if (iRet > 0) {
-                //right;
+                // right;
                 pChatRoom->ShowMsg(szBuf);
-            }
-            else {
-                //close socket;
+            } else {
+                // close socket;
                 pChatRoom->ShowMsg(_T("聊天室服务器已停止，请重新进行连接！"));
                 break;
             }

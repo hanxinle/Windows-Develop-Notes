@@ -10,21 +10,20 @@
 #define new DEBUG_NEW
 #endif
 
-
 // CAboutDlg dialog used for App About
 
 class CAboutDlg : public CDialog {
-public:
+   public:
     CAboutDlg();
 
     // Dialog Data
     enum { IDD = IDD_ABOUTBOX };
 
-protected:
-    virtual void DoDataExchange(CDataExchange* pDX);    // DDX/DDV support
+   protected:
+    virtual void DoDataExchange(CDataExchange* pDX);  // DDX/DDV support
 
-// Implementation
-protected:
+    // Implementation
+   protected:
     DECLARE_MESSAGE_MAP()
 };
 
@@ -37,11 +36,7 @@ void CAboutDlg::DoDataExchange(CDataExchange* pDX) {
 BEGIN_MESSAGE_MAP(CAboutDlg, CDialog)
 END_MESSAGE_MAP()
 
-
 // CChatRoomDlg dialog
-
-
-
 
 CChatRoomDlg::CChatRoomDlg(CWnd* pParent /*=NULL*/)
     : CDialog(CChatRoomDlg::IDD, pParent) {
@@ -62,27 +57,26 @@ void CChatRoomDlg::DoDataExchange(CDataExchange* pDX) {
 }
 
 BEGIN_MESSAGE_MAP(CChatRoomDlg, CDialog)
-    ON_WM_SYSCOMMAND()
-    ON_WM_PAINT()
-    ON_WM_QUERYDRAGICON()
-    //}}AFX_MSG_MAP
-    ON_BN_CLICKED(IDC_NETSET, &CChatRoomDlg::OnBnClickedNetset)
-    ON_BN_CLICKED(IDC_START_SERVER, &CChatRoomDlg::OnBnClickedStartServer)
-    ON_BN_CLICKED(IDC_SENDMSG, &CChatRoomDlg::OnBnClickedSendmsg)
-    ON_BN_CLICKED(IDC_START_CLIENT, &CChatRoomDlg::OnBnClickedStartClient)
-    ON_EN_CHANGE(IDC_INPUT_MSG, &CChatRoomDlg::OnEnChangeInputMsg)
-    ON_BN_CLICKED(IDC_STOP_CLIENT, &CChatRoomDlg::OnBnClickedStopClient)
-    ON_BN_CLICKED(IDC_STOP_SERVER, &CChatRoomDlg::OnBnClickedStopServer)
-    ON_BN_CLICKED(IDC_RADIO_CLIENT, &CChatRoomDlg::OnBnClickedRadioClient)
-    ON_BN_CLICKED(IDC_RADIO_SERVER, &CChatRoomDlg::OnBnClickedRadioServer)
-    ON_BN_CLICKED(IDCANCEL, &CChatRoomDlg::OnBnClickedCancel)
-    ON_BN_CLICKED(IDC_OTHER, &CChatRoomDlg::OnBnClickedOther)
-    ON_COMMAND(ID_MENU_TRAYINCO, &CChatRoomDlg::OnMenuTrayinco)
-    ON_MESSAGE(WM_TRAYICON_MSG, OnTrayCallBackMsg)
-    ON_COMMAND(ID_MENU_SHOW, &CChatRoomDlg::OnMenuShow)
-    ON_COMMAND(ID_MENU_EXIT, &CChatRoomDlg::OnMenuExit)
+ON_WM_SYSCOMMAND()
+ON_WM_PAINT()
+ON_WM_QUERYDRAGICON()
+//}}AFX_MSG_MAP
+ON_BN_CLICKED(IDC_NETSET, &CChatRoomDlg::OnBnClickedNetset)
+ON_BN_CLICKED(IDC_START_SERVER, &CChatRoomDlg::OnBnClickedStartServer)
+ON_BN_CLICKED(IDC_SENDMSG, &CChatRoomDlg::OnBnClickedSendmsg)
+ON_BN_CLICKED(IDC_START_CLIENT, &CChatRoomDlg::OnBnClickedStartClient)
+ON_EN_CHANGE(IDC_INPUT_MSG, &CChatRoomDlg::OnEnChangeInputMsg)
+ON_BN_CLICKED(IDC_STOP_CLIENT, &CChatRoomDlg::OnBnClickedStopClient)
+ON_BN_CLICKED(IDC_STOP_SERVER, &CChatRoomDlg::OnBnClickedStopServer)
+ON_BN_CLICKED(IDC_RADIO_CLIENT, &CChatRoomDlg::OnBnClickedRadioClient)
+ON_BN_CLICKED(IDC_RADIO_SERVER, &CChatRoomDlg::OnBnClickedRadioServer)
+ON_BN_CLICKED(IDCANCEL, &CChatRoomDlg::OnBnClickedCancel)
+ON_BN_CLICKED(IDC_OTHER, &CChatRoomDlg::OnBnClickedOther)
+ON_COMMAND(ID_MENU_TRAYINCO, &CChatRoomDlg::OnMenuTrayinco)
+ON_MESSAGE(WM_TRAYICON_MSG, OnTrayCallBackMsg)
+ON_COMMAND(ID_MENU_SHOW, &CChatRoomDlg::OnMenuShow)
+ON_COMMAND(ID_MENU_EXIT, &CChatRoomDlg::OnMenuExit)
 END_MESSAGE_MAP()
-
 
 // CChatRoomDlg message handlers
 
@@ -107,8 +101,8 @@ BOOL CChatRoomDlg::OnInitDialog() {
 
     // Set the icon for this dialog.  The framework does this automatically
     //  when the application's main window is not a dialog
-    SetIcon(m_hIcon, TRUE);			// Set big icon
-    SetIcon(m_hIcon, FALSE);		// Set small icon
+    SetIcon(m_hIcon, TRUE);   // Set big icon
+    SetIcon(m_hIcon, FALSE);  // Set small icon
 
     DlgAllInit();
     ExtendDiaog(FALSE);
@@ -120,8 +114,7 @@ void CChatRoomDlg::OnSysCommand(UINT nID, LPARAM lParam) {
     if ((nID & 0xFFF0) == IDM_ABOUTBOX) {
         CAboutDlg dlgAbout;
         dlgAbout.DoModal();
-    }
-    else {
+    } else {
         CDialog::OnSysCommand(nID, lParam);
     }
 }
@@ -132,9 +125,10 @@ void CChatRoomDlg::OnSysCommand(UINT nID, LPARAM lParam) {
 
 void CChatRoomDlg::OnPaint() {
     if (IsIconic()) {
-        CPaintDC dc(this); // device context for painting
+        CPaintDC dc(this);  // device context for painting
 
-        SendMessage(WM_ICONERASEBKGND, reinterpret_cast<WPARAM>(dc.GetSafeHdc()), 0);
+        SendMessage(WM_ICONERASEBKGND,
+                    reinterpret_cast<WPARAM>(dc.GetSafeHdc()), 0);
 
         // Center icon in client rectangle
         int cxIcon = GetSystemMetrics(SM_CXICON);
@@ -146,13 +140,13 @@ void CChatRoomDlg::OnPaint() {
 
         // Draw the icon
         dc.DrawIcon(x, y, m_hIcon);
-    }
-    else {
+    } else {
         CDialog::OnPaint();
     }
 }
 
-// The system calls this function to obtain the cursor to display while the user drags
+// The system calls this function to obtain the cursor to display while the user
+// drags
 //  the minimized window.
 HCURSOR CChatRoomDlg::OnQueryDragIcon() {
     return static_cast<HCURSOR>(m_hIcon);
@@ -188,26 +182,31 @@ void CChatRoomDlg::ExtendDiaog(BOOL bShow) {
         m_DlgRectSmall = m_DlgRectLarge;
         m_DlgRectSmall.right -= 220;
 
-        ::GetWindowRect(GetDlgItem(IDC_FRAME)->GetSafeHwnd(), &m_GroupRectLarge);
+        ::GetWindowRect(GetDlgItem(IDC_FRAME)->GetSafeHwnd(),
+                        &m_GroupRectLarge);
         m_GroupRectSmall = m_GroupRectLarge;
         m_GroupRectSmall.right -= 220;
     }
     if (bShow) {
         bShowAll = TRUE;
-        SetWindowPos(NULL, 0, 0, m_DlgRectLarge.Width(), m_DlgRectLarge.Height(), SWP_NOZORDER | SWP_NOMOVE);
-        ::SetWindowPos(GetDlgItem(IDC_FRAME)->GetSafeHwnd(), NULL, 0, 0, m_GroupRectLarge.Width(), m_GroupRectLarge.Height(), SWP_NOZORDER | SWP_NOMOVE);
-    }
-    else {
+        SetWindowPos(NULL, 0, 0, m_DlgRectLarge.Width(),
+                     m_DlgRectLarge.Height(), SWP_NOZORDER | SWP_NOMOVE);
+        ::SetWindowPos(GetDlgItem(IDC_FRAME)->GetSafeHwnd(), NULL, 0, 0,
+                       m_GroupRectLarge.Width(), m_GroupRectLarge.Height(),
+                       SWP_NOZORDER | SWP_NOMOVE);
+    } else {
         bShowAll = FALSE;
-        SetWindowPos(NULL, 0, 0, m_DlgRectSmall.Width(), m_DlgRectSmall.Height(), SWP_NOZORDER | SWP_NOMOVE);
-        ::SetWindowPos(GetDlgItem(IDC_FRAME)->GetSafeHwnd(), NULL, 0, 0, m_GroupRectSmall.Width(), m_GroupRectSmall.Height(), SWP_NOZORDER | SWP_NOMOVE);
+        SetWindowPos(NULL, 0, 0, m_DlgRectSmall.Width(),
+                     m_DlgRectSmall.Height(), SWP_NOZORDER | SWP_NOMOVE);
+        ::SetWindowPos(GetDlgItem(IDC_FRAME)->GetSafeHwnd(), NULL, 0, 0,
+                       m_GroupRectSmall.Width(), m_GroupRectSmall.Height(),
+                       SWP_NOZORDER | SWP_NOMOVE);
     }
 }
 void CChatRoomDlg::OnBnClickedNetset() {
     if (bShowAll) {
         ExtendDiaog(FALSE);
-    }
-    else {
+    } else {
         ExtendDiaog(TRUE);
     }
 }
@@ -239,14 +238,13 @@ void CChatRoomDlg::OnBnClickedSendmsg() {
         strMsg = _T("服务器：>") + strMsg;
         ShowMsg(strMsg);
         SendClientsMsg(strMsg);
-    }
-    else if (m_bIsServer == FALSE) {
+    } else if (m_bIsServer == FALSE) {
         CString strTmp = _T("本地客户端：>") + strMsg;
         ShowMsg(strTmp);
-        int iSend = send(m_ConnectSock, (char *)strMsg.GetBuffer(), strMsg.GetLength() * sizeof(TCHAR), 0);
+        int iSend = send(m_ConnectSock, (char*)strMsg.GetBuffer(),
+                         strMsg.GetLength() * sizeof(TCHAR), 0);
         strMsg.ReleaseBuffer();
-    }
-    else {
+    } else {
         AfxMessageBox(_T("请您先进入聊天室！"));
     }
     SetDlgItemText(IDC_INPUT_MSG, _T(""));
@@ -256,13 +254,16 @@ void CChatRoomDlg::OnBnClickedStartClient() {
     m_hConnectThred = CreateThread(NULL, 0, ConnectThreadFunc, this, 0, NULL);
 }
 
-void CChatRoomDlg::SendClientsMsg(CString strMsg, CClientItem *pNotSend) {
-    TCHAR szBuf[MAX_BUF_SIZE] = { 0 };
+void CChatRoomDlg::SendClientsMsg(CString strMsg, CClientItem* pNotSend) {
+    TCHAR szBuf[MAX_BUF_SIZE] = {0};
     _tcscpy_s(szBuf, MAX_BUF_SIZE, strMsg);
     for (INT_PTR idx = 0; idx < m_ClientArray.GetCount(); idx++) {
-        if (!pNotSend || pNotSend->m_Socket != m_ClientArray.GetAt(idx).m_Socket || pNotSend->hThread != m_ClientArray.GetAt(idx).hThread ||
+        if (!pNotSend ||
+            pNotSend->m_Socket != m_ClientArray.GetAt(idx).m_Socket ||
+            pNotSend->hThread != m_ClientArray.GetAt(idx).hThread ||
             pNotSend->m_strIp != m_ClientArray.GetAt(idx).m_strIp) {
-            send(m_ClientArray.GetAt(idx).m_Socket, (char *)szBuf, _tcslen(szBuf) * sizeof(TCHAR), 0);
+            send(m_ClientArray.GetAt(idx).m_Socket, (char*)szBuf,
+                 _tcslen(szBuf) * sizeof(TCHAR), 0);
         }
     }
 }
@@ -271,8 +272,7 @@ void CChatRoomDlg::OnEnChangeInputMsg() {
     GetDlgItemText(IDC_INPUT_MSG, strMsg);
     if (strMsg.IsEmpty()) {
         EnableWindow(IDC_SENDMSG, FALSE);
-    }
-    else {
+    } else {
         EnableWindow(IDC_SENDMSG);
     }
 }
@@ -292,7 +292,7 @@ void CChatRoomDlg::StopClient() {
 
 void CChatRoomDlg::StopServer() {
     UINT nCount = m_ClientArray.GetCount();
-    HANDLE *m_pHandles = new HANDLE[nCount + 1];
+    HANDLE* m_pHandles = new HANDLE[nCount + 1];
     m_pHandles[0] = m_hListenThread;
     for (int idx = 0; idx < nCount; idx++) {
         m_pHandles[idx + 1] = m_ClientArray.GetAt(idx).hThread;
@@ -331,12 +331,15 @@ void CChatRoomDlg::OnBnClickedStopServer() {
 void CChatRoomDlg::OnBnClickedRadioClient() {
     int iRet = -1;
     if (m_bIsServer == TRUE) {
-        int iRet = MessageBox(_T("您是聊天室的服务器端，如果您退出，所有的客户端都将掉线！\r\n您确定退出吗？"), _T("提示"), MB_OKCANCEL | MB_ICONWARNING);
+        int iRet = MessageBox(
+            _T("您是聊天室的服务器端，如果您退出，所有的客户端都将掉线！\r\n您")
+            _T("确定退出吗？"),
+            _T("提示"), MB_OKCANCEL | MB_ICONWARNING);
         if (iRet == IDOK) {
             StopServer();
-        }
-        else {
-            CheckRadioButton(IDC_RADIO_CLIENT, IDC_RADIO_SERVER, IDC_RADIO_SERVER);
+        } else {
+            CheckRadioButton(IDC_RADIO_CLIENT, IDC_RADIO_SERVER,
+                             IDC_RADIO_SERVER);
         }
     }
     if (iRet == IDOK || m_bIsServer == -1) {
@@ -357,12 +360,13 @@ void CChatRoomDlg::OnBnClickedRadioClient() {
 void CChatRoomDlg::OnBnClickedRadioServer() {
     int iRet = -1;
     if (m_bIsServer == FALSE) {
-        int iRet = MessageBox(_T("您正在聊天室中，确定退出吗？"), _T("提示"), MB_OKCANCEL | MB_ICONWARNING);
+        int iRet = MessageBox(_T("您正在聊天室中，确定退出吗？"), _T("提示"),
+                              MB_OKCANCEL | MB_ICONWARNING);
         if (iRet == IDOK) {
             StopClient();
-        }
-        else {
-            CheckRadioButton(IDC_RADIO_CLIENT, IDC_RADIO_SERVER, IDC_RADIO_CLIENT);
+        } else {
+            CheckRadioButton(IDC_RADIO_CLIENT, IDC_RADIO_SERVER,
+                             IDC_RADIO_CLIENT);
         }
     }
     if (iRet == IDOK || m_bIsServer == -1) {
@@ -383,8 +387,7 @@ void CChatRoomDlg::OnBnClickedRadioServer() {
 void CChatRoomDlg::OnBnClickedCancel() {
     if (m_bIsServer == TRUE) {
         StopServer();
-    }
-    else if (m_bIsServer == FALSE) {
+    } else if (m_bIsServer == FALSE) {
         StopClient();
     }
     OnCancel();
@@ -411,13 +414,13 @@ BOOL CChatRoomDlg::TrayMyIcon(BOOL bAdd) {
     if (bAdd == TRUE) {
         tnd.uFlags = NIF_MESSAGE | NIF_ICON | NIF_TIP;
         tnd.uCallbackMessage = WM_TRAYICON_MSG;
-        tnd.hIcon = LoadIcon(AfxGetInstanceHandle(), MAKEINTRESOURCE(IDR_MAINFRAME));
+        tnd.hIcon =
+            LoadIcon(AfxGetInstanceHandle(), MAKEINTRESOURCE(IDR_MAINFRAME));
         _tcscpy_s(tnd.szTip, sizeof(tnd.szTip), _T("聊天室v1.0"));
         ShowWindow(SW_MINIMIZE);
         ShowWindow(SW_HIDE);
         bRet = Shell_NotifyIcon(NIM_ADD, &tnd);
-    }
-    else {
+    } else {
         ShowWindow(SW_SHOWNA);
         SetForegroundWindow();
         bRet = Shell_NotifyIcon(NIM_DELETE, &tnd);
@@ -425,21 +428,19 @@ BOOL CChatRoomDlg::TrayMyIcon(BOOL bAdd) {
     return bRet;
 }
 
-void CChatRoomDlg::OnMenuTrayinco() {
-    TrayMyIcon();
-}
+void CChatRoomDlg::OnMenuTrayinco() { TrayMyIcon(); }
 
 LRESULT CChatRoomDlg::OnTrayCallBackMsg(WPARAM wparam, LPARAM lparam) {
     switch (lparam) {
-        case WM_RBUTTONUP:
-        {
+        case WM_RBUTTONUP: {
             CMenu mMenu, *pMenu = NULL;
             CPoint pt;
             mMenu.LoadMenu(IDR_MENU2);
             pMenu = mMenu.GetSubMenu(0);
             GetCursorPos(&pt);
             SetForegroundWindow();
-            pMenu->TrackPopupMenu(TPM_LEFTALIGN | TPM_RIGHTBUTTON, pt.x, pt.y, this);
+            pMenu->TrackPopupMenu(TPM_LEFTALIGN | TPM_RIGHTBUTTON, pt.x, pt.y,
+                                  this);
             break;
         }
         case WM_LBUTTONDBLCLK:
@@ -447,7 +448,8 @@ LRESULT CChatRoomDlg::OnTrayCallBackMsg(WPARAM wparam, LPARAM lparam) {
             SetForegroundWindow();
             TrayMyIcon(FALSE);
             break;
-        default:break;
+        default:
+            break;
     }
     return NULL;
 }
