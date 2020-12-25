@@ -6,22 +6,20 @@
 #include "afxwin.h"
 #include "Inc.h"
 
-
 // CChatRoomDlg dialog
 class CChatRoomDlg : public CDialog {
     // Construction
-public:
-    CChatRoomDlg(CWnd* pParent = NULL);	// standard constructor
+   public:
+    CChatRoomDlg(CWnd* pParent = NULL);  // standard constructor
 
-// Dialog Data
+    // Dialog Data
     enum { IDD = IDD_CHATROOM_DIALOG };
 
-protected:
-    virtual void DoDataExchange(CDataExchange* pDX);	// DDX/DDV support
+   protected:
+    virtual void DoDataExchange(CDataExchange* pDX);  // DDX/DDV support
 
-
-// Implementation
-protected:
+    // Implementation
+   protected:
     HICON m_hIcon;
 
     // Generated message map functions
@@ -30,7 +28,7 @@ protected:
     afx_msg void OnPaint();
     afx_msg HCURSOR OnQueryDragIcon();
     DECLARE_MESSAGE_MAP()
-public:
+   public:
     void DlgAllInit();
     CButton m_StopClientBtn;
     BOOL EnableWindow(UINT uID, BOOL bEnable = TRUE);
@@ -42,13 +40,13 @@ public:
     SOCKET m_ConnectSock;
     HANDLE m_hListenThread;
     HANDLE m_hConnectThred;
-    CArray <CClientItem, CClientItem> m_ClientArray;
+    CArray<CClientItem, CClientItem> m_ClientArray;
     CEdit m_MsgEdit;
     void ShowMsg(CString strMsg);
     void RemoveClientFromArray(CClientItem in_Item);
     afx_msg void OnBnClickedSendmsg();
     afx_msg void OnBnClickedStartClient();
-    void SendClientsMsg(CString strMsg, CClientItem *pNotSend = NULL);
+    void SendClientsMsg(CString strMsg, CClientItem* pNotSend = NULL);
     int m_bIsServer;
     afx_msg void OnEnChangeInputMsg();
     void StopClient();

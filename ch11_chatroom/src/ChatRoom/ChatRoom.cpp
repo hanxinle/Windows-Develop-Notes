@@ -5,7 +5,6 @@
 #include "ChatRoom.h"
 #include "ChatRoomDlg.h"
 
-
 #ifdef _DEBUG
 #define new DEBUG_NEW
 #endif
@@ -13,7 +12,7 @@
 // CChatRoomApp
 
 BEGIN_MESSAGE_MAP(CChatRoomApp, CWinApp)
-    ON_COMMAND(ID_HELP, &CWinApp::OnHelp)
+ON_COMMAND(ID_HELP, &CWinApp::OnHelp)
 END_MESSAGE_MAP()
 
 // CChatRoomApp construction
@@ -64,8 +63,7 @@ BOOL CChatRoomApp::InitInstance() {
     if (nResponse == IDOK) {
         // TODO: Place code here to handle when the dialog is
         //  dismissed with OK
-    }
-    else if (nResponse == IDCANCEL) {
+    } else if (nResponse == IDCANCEL) {
         // TODO: Place code here to handle when the dialog is
         //  dismissed with Cancel
     }

@@ -7,19 +7,18 @@
 #error "include 'stdafx.h' before including this file for PCH"
 #endif
 
-#include "resource.h"		// main symbols
-
+#include "resource.h"  // main symbols
 
 // CChatRoomApp:
 // See ChatRoom.cpp for the implementation of this class
 //
 
 class CChatRoomApp : public CWinApp {
-public:
+   public:
     CChatRoomApp();
 
     // Overrides
-public:
+   public:
     virtual BOOL InitInstance();
 
     // Implementation
