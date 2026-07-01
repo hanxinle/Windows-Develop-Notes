@@ -1,16 +1,63 @@
-# LInux and windows
+# 编译产物
 *.exe
+*.dll
 *.out
 *.obj
 *.idb
 *.pdb
-*.log
-*.tlog
-*.txt
 *.ilk
 *.pch
 *.res
+*.sbr
+*.lib
+*.exp
+
+# 日志文件
+*.log
+*.tlog
+*.Build.CppClean.log
+
+# Visual Studio 缓存与临时文件
+.vs/
 *.suo
-*.db
+*.user
+*.userosscache
+*.sln.docstates
+*.aps
+*.ncb
+*.opt
+*.plg
+*.clw
+*.dsw
+*.dsp
+*.mdp
+*.mak
+*.opendb
 *.ipch
-*.vs
+*.cache
+*.tmp
+
+# 编译输出目录
+Debug/
+Release/
+x64/
+x86/
+ARM64/
+ARM/
+bin/
+obj/
+
+# Qt 生成文件
+GeneratedFiles/
+*.moc
+moc_*.cpp
+moc_*.h
+qrc_*.cpp
+ui_*.h
+
+# IDE 配置
+.vscode/
+.idea/
+
+# 依赖管理生成的目录
+packages/
