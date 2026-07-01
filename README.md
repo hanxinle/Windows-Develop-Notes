@@ -794,3 +794,98 @@ LRESULT CALLBACK MainWndProc(HWND hWnd, UINT message, WPARAM wparam, LPARAM lpar
 ![](./img/12_mfc对windowsAPI封装情况.png)
 
 继承 CWinAPP，封装 instance，instance 包含各个空间的 hwnd，封装 hwnd 创建消息处理接口。
+
+# 12 Windows C++ Crash 治理实战
+
+本章内容位于 `./ch12_crash_demos/`，是对 Windows 平台 C++ 崩溃治理的系统性实战总结。历时约一个月，完整学习并验证了 14 组、共 20 个源文件，覆盖异常处理机制、常见崩溃类型、并发问题与大型工程进阶问题四大板块。
+
+## 12.1 核心知识地图
+
+### 异常处理机制（01-03）
+
+Windows 异常处理是一条有优先级的链条：
+
+```
+异常发生
+  → VEH（向量异常处理，最先，可注册多个）
+  → SEH（结构化异常处理，__try/__except，栈帧级）
+  → C++ EH（try/catch，仅处理 C++ throw 的异常）
+  → UEF（未处理异常过滤器，最后兜底，用于生成 dump）
+  → WER（Windows 错误报告，系统级）
+```
+
+关键理解：
+- VEH 优先级最高，可用于 hook 和抢先处理。
+- SEH 能捕获系统级硬件异常（如访问违例），C++ 的 catch 默认不能。
+- UEF 是崩溃兜底的最后一道防线，MiniDump 通常在这里生成。
+
+### 常见崩溃类型（04-08、10-11）
+
+| 崩溃类型 | 根因 | 治理方向 |
+|---------|------|---------|
+| 空指针/野指针 | 解引用无效地址 | 使用前判空、智能指针 |
+| 堆破坏 | 越界写、重复释放、释放后使用 | ASan、page heap、RAII |
+| 栈溢出 | 无限递归、大局部数组 | 递归深度限制、堆分配大对象 |
+| 未初始化 | 变量/成员未赋初值 | 声明即初始化、`{}` 初始化 |
+| 内存耗尽 | 分配失败未处理 | 检查返回值、优雅降级 |
+| 纯虚调用 | 构造/析构期调用虚函数 | 避免在构造析构中调虚函数 |
+
+### 并发问题（07）
+
+- 数据竞争：多线程无保护读写共享数据，结果不确定甚至崩溃。
+- 治理三件套：互斥锁（`std::mutex`）、原子变量（`std::atomic`）、无共享设计。
+
+### 大型工程进阶（13-14）
+
+SIOF（静态初始化顺序问题）：
+- C++ 只保证同一编译单元内全局对象的初始化顺序，跨编译单元由链接器决定，不确定。
+- 崩溃发生在 `main()` 之前的 `_initterm()` 中，调用栈不在业务代码里，极难排查。
+- 解决方案：Meyers' Singleton（函数内 static 局部对象，首次调用时才构造）。
+
+跨模块内存分配：
+- `/MT` 静态链接时每个 DLL/EXE 有独立 CRT 堆，跨模块 `new`/`delete` 会崩溃。
+- 两条黄金原则：
+  1. 不要让全局对象互相依赖（用 Meyers' Singleton）。
+  2. 不要跨模块分配/释放内存（谁分配谁释放，或统一 `/MD`）。
+
+## 12.2 编译命令速查
+
+打开 "x64 Native Tools Command Prompt for VS"，然后：
+
+```bash
+cd M:\20260504-CPP-crash\crash_demos
+
+# 编译单个 demo（以 01 为例）
+cl /EHsc /W4 /Zi /Fe:demo_01_veh.exe 01_veh.cpp DbgHelp.lib
+
+# 运行
+demo_01_veh.exe
+```
+
+或者 CMake 一次性编译全部：
+
+```bash
+mkdir build && cd build
+cmake .. -G "Visual Studio 17 2022" -A x64
+cmake --build . --config Debug
+```
+
+## 12.3 下一阶段学习建议
+
+Demo 阶段完成后，重点转向工具链实战，把"看懂崩溃"升级为"能定位线上崩溃"：
+
+| 工具 | 用途 | 入门方式 |
+|------|------|---------|
+| WinDbg | 分析 MiniDump，还原调用栈 | 用 Demo 03 生成的 dump 练手：`.ecxr` → `k` 看栈 |
+| gflags + Page Heap | 精确定位堆破坏（Demo 05） | `gflags /p /enable yourapp.exe /full` |
+| AddressSanitizer | 编译期插桩，抓越界/UAF | VS 项目属性开启 ASan，重跑 Demo 05 |
+| Application Verifier | 系统级验证堆、句柄、锁 | 微软官方工具，配合 WinDbg |
+
+崩溃上报框架：
+- Crashpad（Chromium 现役）/ Breakpad（老牌）— 生产级 dump 采集与上报。
+- 建议：把 Demo 03 的 UEF+MiniDump 思路，换成 Crashpad 实现一遍。
+
+推荐资料：
+- 书：《Windows via C/C++》（Jeffrey Richter）— 进程/线程/内存/DLL 权威。
+- 书：《Debugging Applications for Microsoft .NET and Microsoft Windows》（John Robbins）— dump 分析实战。
+- 微软文档：WinDbg 命令参考、Application Verifier、AddressSanitizer for Windows。
